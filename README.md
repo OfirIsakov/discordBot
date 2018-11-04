@@ -4,6 +4,15 @@
 
 Clone/Download the files via the green button in the right side of the screen.
 
+Open your cmd and then write:
+```
+pip install discord.py
+pip install -U youtube_dl
+pip install numpy
+pip install asyncio
+pip install asyncio
+```
+
 Then add a token.py file in the same folder as the KQLY.py and write this in the file:
 ```
 def token():

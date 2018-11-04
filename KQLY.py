@@ -334,7 +334,7 @@ async def move(ctx, victim, numbers):
                 victim_member = ctx.message.mentions[0]
                 channel = bot.get_channel(afk)
                 await bot.move_member(victim_member, channel)
-                await asyncio.sleep(1)
+                await asyncio.sleep(0.75)
 
                 if breaking:
                     break
