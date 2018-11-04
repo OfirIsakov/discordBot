@@ -9,28 +9,39 @@ from itertools import cycle
 import numpy
 import token
 
+### PLAYERS IDS ###
 
 ofido = '283625847460462593'
-idan = '266593092205805568'
-ronen = '272719228170403840'
-ronen2 = '426713009356931072'
-aviad = '285056543479562240'
-tomer = '330721023563399169'
-asaf = '325264338149703680'
+yigdan = '266593092205805568'
+rrass = '272719228170403840'
+rrass2 = '426713009356931072'
+daiva = '285056543479562240'
+hatif = '330721023563399169'
+koko = '325264338149703680'
+
+### LOBBY IDS ###
 afk = '476770345945268225'
 console = '500414709351317509'
+
+### LIST FOR MUSIC PLAYER ###
 players = {}
+
+### ANIMATED MOTD ###
 status = ['KQLYHACKS.WORDPRESS.COM','NEVER VAC AND YOU KNOW!']
 
-
-
-bot = commands.Bot(command_prefix="#")
-bot.remove_command('help')
+### MISC ###
 line = '-----------------'
 
+### PREFIX ###
+bot = commands.Bot(command_prefix="#")
+
+### REMOVED COMMANDS ###
+bot.remove_command('help')
 
 
-# STATUSES
+
+
+### STATUSES ###
 async def change_status():
     await bot.wait_until_ready()
     msgs = cycle(status)
@@ -45,7 +56,7 @@ async def change_status():
         
         
 
-# PRINTS TO CONSOLE WHEN GOING ONLINE
+### PRINTS TO CONSOLE WHEN GOING ONLINE ###
 @bot.event
 async def on_ready():
     await bot.send_message(discord.Object(id=console),'Time:' + str(strftime("%d-%m-%Y %H:%M:%S", gmtime())))
@@ -54,7 +65,7 @@ async def on_ready():
     await bot.send_message(discord.Object(id=console),str(line))
 
 
-# CLOSE BOT
+### CLOSE BOT ###
 @bot.command(pass_context=True)
 async def close(ctx):
     if ctx.message.author.id == ofido:
@@ -62,10 +73,10 @@ async def close(ctx):
         await bot.logout()
         
 
-# HELP FUNCTION
+### HELP FUNCTION ###
 @bot.command(pass_context=True)
 async def help(ctx):
-    if not ctx.message.author.id == aviad:
+    if not ctx.message.author.id == daiva:
         author = ctx.message.author
         embed = discord.Embed(title="Dont worry {}".format(author.name), description="I will help ya!", color=0x00F0A9)
         embed.add_field(name="Prefix:", value="#")
@@ -84,29 +95,29 @@ async def help(ctx):
         embed.add_field(name="roll:", value="Chooses a random person frtom all the servers im in.")
         embed.add_field(name="kick(Disabled because security purposes.):", value="Kicks the mentioned user.")
         await bot.say(embed=embed)
-        # PRINT TO CONSOLE
+        ### PRINT TO CONSOLE ###
         await bot.send_message(discord.Object(id=console),"Help:")
         await bot.send_message(discord.Object(id=console),'At: ' + str(strftime("%d-%m-%Y %H:%M:%S", gmtime())))
         await bot.send_message(discord.Object(id=console),'By: ' + str(author))
         await bot.send_message(discord.Object(id=console),str(line))
 
 
-# PING FUNCTION
+### PING FUNCTION ###
 @bot.command(pass_context=True)
 async def ping(ctx):
-    if not ctx.message.author.id == aviad:
+    if not ctx.message.author.id == daiva:
         author = ctx.message.author
         await bot.say("Pong! :ping_pong:")
-        # PRINT TO CONSOLE
+        ### PRINT TO CONSOLE ### 
         await bot.send_message(discord.Object(id=console),'At: ' + str(strftime("%d-%m-%Y %H:%M:%S", gmtime())))
         await bot.send_message(discord.Object(id=console),'By: ' + str(author))
         await bot.send_message(discord.Object(id=console),str(line))
 
 
-# USER INFO
+### USER INFO ### 
 @bot.command(pass_context=True)
 async def info(ctx, user: discord.Member):
-    if not ctx.message.author.id == aviad:
+    if not ctx.message.author.id == daiva:
         author = ctx.message.author
         embed = discord.Embed(title="{}'s Info.".format(user.name), description="So... I Found This:", color=0x00ff00)
         embed.add_field(name="Name:", value=user.name, inline=True)
@@ -116,7 +127,7 @@ async def info(ctx, user: discord.Member):
         embed.add_field(name="Joined At:", value=user.joined_at)
         embed.set_thumbnail(url=user.avatar_url)
         await bot.say(embed=embed)
-        # PRINT TO CONSOLE
+        ### PRINT TO CONSOLE ### 
         await bot.send_message(discord.Object(id=console),user.name + '\'s - Info.')
         await bot.send_message(discord.Object(id=console),'-ID.' + user.id)
         await bot.send_message(discord.Object(id=console),'-Status.' + user.status)
@@ -128,10 +139,10 @@ async def info(ctx, user: discord.Member):
         await bot.send_message(discord.Object(id=console),str(line))
 
 
-# SERVER INFO
+### SERVER INFO ###
 @bot.command(pass_context=True)
 async def serverinfo(ctx):
-    if not ctx.message.author.id == aviad:
+    if not ctx.message.author.id == daiva:
         author = ctx.message.author
         embed = discord.Embed(title="{}'s Info.".format(ctx.message.server.name), description="So... I Found This:", color=0xff0000)
         embed.add_field(name="Name:", value=ctx.message.server.name, inline=True)
@@ -140,7 +151,7 @@ async def serverinfo(ctx):
         embed.add_field(name="Members:", value=str(len(ctx.message.server.members)))
         embed.set_thumbnail(url=ctx.message.server.icon_url)
         await bot.say(embed=embed)
-        # PRINT TO CONSOLE
+        ### PRINT TO CONSOLE ###
         await bot.send_message(discord.Object(id=console),ctx.message.server.name + '\'s - ServerInfo.')
         await bot.send_message(discord.Object(id=console),'-ID.' + ctx.message.server.id)
         await bot.send_message(discord.Object(id=console),'-Roles.' + len(ctx.message.server.roles))
@@ -152,31 +163,31 @@ async def serverinfo(ctx):
         await bot.send_message(discord.Object(id=console),str(line))
 
 
-# JOIN CHANNEL
+### JOIN CHANNEL ###
 @bot.command(pass_context=True)
 async def join(ctx):
-    if not ctx.message.author.id == aviad:
+    if not ctx.message.author.id == daiva:
         author = ctx.message.author
         channel = author.voice.voice_channel
         await bot.join_voice_channel(channel)
-        # PRINT TO CONSOLE
+        ### PRINT TO CONSOLE ###
         await bot.send_message(discord.Object(id=console),'Joined: ' + str(channel))
         await bot.send_message(discord.Object(id=console),'At: ' + str(strftime("%d-%m-%Y %H:%M:%S", gmtime())))
         await bot.send_message(discord.Object(id=console),'By: ' + str(author))
         await bot.send_message(discord.Object(id=console),str(line))
 
 
-# PLAY MUSIC
+### PLAY MUSIC ###
 @bot.command(pass_context=True)
 async def play(ctx, url):
-    if not ctx.message.author.id == aviad:
+    if not ctx.message.author.id == daiva:
         author = ctx.message.author
         try:
             channel = author.voice.voice_channel
             await bot.join_voice_channel(channel)
         except:
             print('All ready was connected!')
-        # PRINT TO CONSOLE
+        ### PRINT TO CONSOLE ###
         await bot.send_message(discord.Object(id=console),'Joined: ' + 'Played: ' + str(url) + 'at: ' + str(channel))
         await bot.send_message(discord.Object(id=console),'At: ' + str(strftime("%d-%m-%Y %H:%M:%S", gmtime())))
         await bot.send_message(discord.Object(id=console),'By: ' + str(author))
@@ -189,13 +200,13 @@ async def play(ctx, url):
         player.start()
     
     
-# PAUSE MUSIC
+### PAUSE MUSIC ###
 @bot.command(pass_context=True)
 async def pause(ctx):
-    if not ctx.message.author.id == aviad:
+    if not ctx.message.author.id == daiva:
         author = ctx.message.author
         await bot.say('Paused, it\'s  not my fault! It\'s %s fault!' % str(author.mention))
-        # PRINT TO CONSOLE
+        ### PRINT TO CONSOLE ###
         await bot.send_message(discord.Object(id=console),'Paused playing')
         await bot.send_message(discord.Object(id=console),'At: ' + str(strftime("%d-%m-%Y %H:%M:%S", gmtime())))
         await bot.send_message(discord.Object(id=console),'By: ' + str(author))
@@ -205,13 +216,13 @@ async def pause(ctx):
     
     
     
-# RESUME MUSIC
+### RESUME MUSIC ###
 @bot.command(pass_context=True)
 async def resume(ctx):
-    if not ctx.message.author.id == aviad:
+    if not ctx.message.author.id == daiva:
         author = ctx.message.author
         await bot.say('Resumed playing, it\'s not my fault! It\'s %s fault!' % str(author.mention))
-        # PRINT TO CONSOLE
+        ### PRINT TO CONSOLE ###
         await bot.send_message(discord.Object(id=console),'Resumed playing')
         await bot.send_message(discord.Object(id=console),'At: ' + str(strftime("%d-%m-%Y %H:%M:%S", gmtime())))
         await bot.send_message(discord.Object(id=console),'By: ' + str(author))
@@ -220,13 +231,13 @@ async def resume(ctx):
         players[id].resume()
     
     
-# STOP MUSIC
+### STOP MUSIC ###
 @bot.command(pass_context=True)
 async def stop(ctx):
-    if not ctx.message.author.id == aviad:
+    if not ctx.message.author.id == daiva:
         author = ctx.message.author
         await bot.say('Stoped playing, it\'s not my fault! It\'s %s fault!' % str(author.mention))
-        # PRINT TO CONSOLE
+        ### PRINT TO CONSOLE ###
         await bot.send_message(discord.Object(id=console),'Stoped playing')
         await bot.send_message(discord.Object(id=console),'At: ' + str(strftime("%d-%m-%Y %H:%M:%S", gmtime())))
         await bot.send_message(discord.Object(id=console),'By: ' + str(author))
@@ -238,29 +249,29 @@ async def stop(ctx):
         await voice_client.disconnect()
     
     
-# QUEUE A SONG
-    
+### QUEUE A SONG ###
+###### work in progress ######
 
 
-# LEAVE CHANNEL
+### LEAVE CHANNEL ###
 @bot.command(pass_context=True)
 async def leave(ctx):
-    if not ctx.message.author.id == aviad:
+    if not ctx.message.author.id == daiva:
         author = ctx.message.author
         server = ctx.message.server
         voice_client = bot.voice_client_in(server)
         await voice_client.disconnect()
-        # PRINT TO CONSOLE
+        ### PRINT TO CONSOLE ###
         await bot.send_message(discord.Object(id=console),'Left Channel')
         await bot.send_message(discord.Object(id=console),'At: ' + str(strftime("%d-%m-%Y %H:%M:%S", gmtime())))
         await bot.send_message(discord.Object(id=console),'By: ' + str(author))
         await bot.send_message(discord.Object(id=console),str(line))
 
 
-# PLAY MUSIC
+### PLAY MUSIC ###
 @bot.command(pass_context=True)
 async def ah(ctx):
-    if not ctx.message.author.id == aviad:
+    if not ctx.message.author.id == daiva:
     
         url = 'https://www.youtube.com/watch?v=ZntwTAreDSc'
         author = ctx.message.author
@@ -269,7 +280,7 @@ async def ah(ctx):
             await bot.join_voice_channel(channel)
         except:
             await bot.send_message(discord.Object(id=console),'All ready was connected!')
-        # PRINT TO CONSOLE
+        ### PRINT TO CONSOLE ###
         await bot.send_message(discord.Object(id=console),'Ah meshihma va mala')
         await bot.send_message(discord.Object(id=console),'At: ' + str(strftime("%d-%m-%Y %H:%M:%S", gmtime())))
         await bot.send_message(discord.Object(id=console),'By: ' + str(author))
@@ -282,17 +293,17 @@ async def ah(ctx):
         player.start()
 
 
-# SPAM JOIN CHANNEL
+### SPAM JOIN CHANNEL ###
 @bot.command(pass_context=True)
 async def spam(ctx):
-    if not ctx.message.author.id == aviad:
+    if not ctx.message.author.id == daiva:
         global l
         l = True
         author = ctx.message.author
         channel = author.voice_channel
         chanelserver = author.voice_channel.server
         voice_channel = bot.voice_client_in(chanelserver)
-        # PRINT TO CONSOLE
+        ### PRINT TO CONSOLE ###
         await bot.send_message(discord.Object(id=console),'Spamed: ' + str(chanelserver))
         await bot.send_message(discord.Object(id=console),'At: ' + str(strftime("%d-%m-%Y %H:%M:%S", gmtime())))
         await bot.send_message(discord.Object(id=console),'By: ' + str(author))
@@ -304,19 +315,19 @@ async def spam(ctx):
                 await voice_channel.disconnect()
 
 
-# STOP THE LOOP
+### STOP THE LOOP ###
 @bot.command(pass_context=True)
 async def stop_move(ctx):
     global breaking
     breaking = True
 
 
-# VOICE CHANNEL
+### VOICE CHANNEL ###
 @bot.command(pass_context=True)
 async def move(ctx, victim, numbers):
-    if not ctx.message.author.id == aviad:
+    if not ctx.message.author.id == daiva:
         author = ctx.message.author
-        if author.id == ofido or author.id == idan:
+        if author.id == ofido or author.id == yigdan:
             global breaking
             breaking = False
             for i in range(abs(int(numbers))):
@@ -331,10 +342,10 @@ async def move(ctx, victim, numbers):
             await bot.say('NO!')
 
 
-# CHECKS FOR THE TOP 3 GAME USERS ARE PLYING
+### CHECKS FOR THE TOP 3 GAME USERS ARE PLYING ###
 @bot.command(pass_context=True)
 async def playing(ctx):
-    if not ctx.message.author.id == aviad:
+    if not ctx.message.author.id == daiva:
         author = ctx.message.author
         lista = []
         none = []
@@ -354,7 +365,7 @@ async def playing(ctx):
             listb = numpy.array_split(lista, 2)
             final2 = "\n".join(listb)
             await bot.say(final2)
-        # PRINT TO CONSOLE
+        ### PRINT TO CONSOLE ###
         await bot.send_message(discord.Object(id=console),str(len(none)) + 'users are not doing anything.')
         await bot.send_message(discord.Object(id=console),final)
         await bot.send_message(discord.Object(id=console),"Playing:")
@@ -363,10 +374,10 @@ async def playing(ctx):
         await bot.send_message(discord.Object(id=console),str(line))
 
 
-# CHOOSES A RANDOM PERSON
+### CHOOSES A RANDOM PERSON ###
 @bot.command(pass_context=True)
 async def roll(ctx):
-    if not ctx.message.author.id == aviad:
+    if not ctx.message.author.id == daiva:
         author = ctx.message.author
         serverid = ctx.message.server.id
         members = []
@@ -378,7 +389,7 @@ async def roll(ctx):
         memberCount = len(members)
         randomNumber = random.randint(0, (memberCount - 1))
         await bot.say(members[randomNumber].name + " I choose you!")
-        # PRINT TO CONSOLE
+        ### PRINT TO CONSOLE ###
         await bot.send_message(discord.Object(id=console),"roll: ")
         await bot.send_message(discord.Object(id=console),"rolled: " + str(members[randomNumber].name))
         await bot.send_message(discord.Object(id=console),'At: ' + str(strftime("%d-%m-%Y %H:%M:%S", gmtime())))
@@ -386,27 +397,22 @@ async def roll(ctx):
         await bot.send_message(discord.Object(id=console),str(line))
 
 
-# # SPAM MOVE CHANNEL
-# @bot.command(pass_context=True)
-# async def move(ctx, user: discord.Member):
-
-
-# LOVE ME
+### LOVE ME ###
 @bot.command(pass_context=True)
 async def loveme(ctx):
-    if not ctx.message.author.id == aviad:
+    if not ctx.message.author.id == daiva:
         if ctx.message.author.id == ofido:
             await bot.say(":heart_eyes:")
         else:
             await bot.say("{}, m8... I ONLY LOVE OFIDO!:rage:".format(ctx.message.author.mention))
 
 
-# KICKS A USER FROM VOICE CHANNEL
+### KICKS A USER FROM VOICE CHANNEL ###
 @bot.command(pass_context=True)
 async def kick(ctx):
-    if not ctx.message.author.id == aviad:
+    if not ctx.message.author.id == daiva:
         author = ctx.message.author
-        if ctx.message.author.id == ofido or ctx.message.author.id == idan:
+        if ctx.message.author.id == ofido or ctx.message.author.id == yigdan:
             victim = ctx.message.mentions[0]
             kick_channel = await bot.create_channel(ctx.message.server, "kick", type=discord.ChannelType.voice)
             await bot.move_member(victim, kick_channel)
@@ -417,13 +423,13 @@ async def kick(ctx):
             kick_channel = await bot.create_channel(ctx.message.server, "kick", type=discord.ChannelType.voice)
             await bot.move_member(victim, kick_channel)
             await bot.delete_channel(kick_channel) 
-            # PRINT TO CONSOLE
+            ### PRINT TO CONSOLE ###
             await bot.send_message(discord.Object(id=console),'Some 1 tried to kick you:')
             await bot.send_message(discord.Object(id=console),'At: ' + str(strftime("%d-%m-%Y %H:%M:%S", gmtime())))
             await bot.send_message(discord.Object(id=console),'By: ' + str(author))
             await bot.send_message(discord.Object(id=console),str(line))
 
-# KICK FROM SERVER
+### KICK FROM SERVER ###
 # @bot.command(pass_context=True)
 # async def kick(ctx, user: discord.Member):
 #
@@ -438,7 +444,7 @@ async def kick(ctx):
 #         print(line)
 
 
-# EMBED OPTIONS
+### EMBED OPTIONS ###
 # @bot.command(pass_context=True)
 # async def embed(ctx):
 #     embed = discord.Embed(title="test", description="THE KQLY IS TESTING")
@@ -449,17 +455,17 @@ async def kick(ctx):
 
 
 
-
+### OLD FORMAT ###
 # @bot.event
 #
 # async def on_message(message):
 #     msg = message.content.upper()
 #     userid = message.author.id
 #     ofido = "283625847460462593"
-#     idan = "266593092205805568"
+#     yigdan = "266593092205805568"
 #     mention = message.author.mention
 #     if msg.startswith('KQLY'):
-#         if userid == ofido or userid == idan:
+#         if userid == ofido or userid == yigdan:
 #             await bot.send_message(message.channel, "Yes master?")
 #             counter = 0
 #             counter += 1
@@ -470,149 +476,15 @@ async def kick(ctx):
 #                 await bot.delete_message(message)
 #
 #     if msg.startswith("HOW ARE YOU?"):
-#         if userid == ofido or userid == idan:
+#         if userid == ofido or userid == yigdan:
 #             await bot.send_message(message.channel, "Im fine! %s" % mention)
 #             await bot.send_message(message.channel, "You?")
 #
 #     if msg.startswith("FINE THX"):
-#         if userid == ofido or userid == idan:
+#         if userid == ofido or userid == yigdan:
 #             await bot.send_message(message.channel, ":smile:")
 
 
 bot.loop.create_task(change_status())
 bot.run(token.token())
 
-
-# @client.event
-# async def on_message(message):
-#
-#     mention = message.author.mention
-#     userid = message.author.id
-#     sender = message.author
-#     msg = message.content.upper()
-#     ofido = "283625847460462593"
-#     idan = "266593092205805568"
-#     ofire = "266593092205805568"
-#     yair = "259299397286756352"
-#     test = "Morat#5492"
-#     l = True
-#     if sender == client.user:
-#         return
-#     if msg.startswith('HI'):
-#         await client.send_message(message.channel, "Greetings %s" % (mention))
-#     if msg.startswith('.... ..'):
-#         await client.send_message(message.channel, "Greetings %s" % (mention))
-#     if msg.startswith(prefix + 'KQLY'):
-#         await client.send_message(message.channel, "https://kqlyhacks.wordpress.com/ from %s" % (mention))
-#         await client.delete_message(message)
-#     if msg.startswith(prefix + 'SAY'):
-#         if userid == ofido:
-#             args = message.content.split(" ")
-#             await client.send_message(message.channel, "%s" % (" ".join(args[1:])))
-#             counter = 0
-#             await client.delete_message(message)
-#             counter += 1
-#             if counter == 1:
-#                 return
-#         else:
-#             await client.send_message(message.channel, "You don't have the permissions!")
-#     if msg.startswith(prefix + "RIP"):
-#         args = message.content.split(" ")
-#         await client.send_message(message.channel, '''
-# ████▄░░░░██░░░░███
-# ██░██░░░░██░░░░██░██
-# ████▀░░░░██░░░░████▀
-# ██░██░██░██░██░██░░░ %s''' % (" ".join(args[1:])))
-#         counter = 0
-#         await client.delete_message(message)
-#         counter += 1
-#         if counter == 1:
-#             return
-#         else:
-#             await client.send_message(message.channel, "You don't have the permissions!")
-#     if msg.startswith('KQLY'):
-#         if userid == ofido or userid == idan:
-#             await client.send_message(message.channel, "Yes master?")
-#             counter = 0
-#             counter += 1
-#             if counter == 1:
-#                 return
-#         else:
-#             await client.send_message(message.channel, "%s DONT SAY THE NAME OF KQLY!!" % mention)
-#             await client.delete_message(message)
-#     if msg.startswith("HOW ARE YOU?"):
-#         if userid == ofido or userid == idan:
-#             await client.send_message(message.channel, "Im fine! :D %s" % mention)
-#             await client.send_message(message.channel, "You?")
-#             counter = 0
-#             counter += 1
-#             if counter == 1:
-#                 return
-#         else:
-#             return
-#     if msg.startswith(prefix + 'JOIN'):
-#         try:
-#             voice_client = client.voice_client_in(message.server)
-#             await voice_client.disconnect()
-#         except Exception :
-#             print("Joined a channel just now!")
-#         try:
-#             channel = sender.voice.voice_channel
-#             await client.join_voice_channel(channel)
-#         except discord.errors.InvalidArgument:
-#             await client.send_message(message.channel, "Some sort of an error.... Please contact ofido about this!")
-#         except Exception as error:
-#             await client.send_message(message.channel, "Error: {error} Try contacting ofido!".format(error=error))
-#     if msg.startswith(prefix + 'QUIT'):
-#         try:
-#             voice_client = client.voice_client_in(message.server)
-#             await voice_client.disconnect()
-#         except AttributeError:
-#             await client.send_message(message.channel, "Im not in a channel...")
-#         except Exception as ero:
-#             await client.send_message(message.channel, "Error: ```{eror}``` Try contacting ofido!".format(eror=ero))
-#     if userid == ofido or userid == idan or userid == ofire:
-#         if msg.startswith(prefix + 'SPAM'):
-#             while l == True:
-#                 channel = sender.voice.voice_channel
-#                 await client.join_voice_channel(channel)
-#                 voice_client = client.voice_client_in(message.server)
-#                 await voice_client.disconnect()
-#     if userid == ofido or userid == ofire:
-#         n
-#     # if discord.on_voice_state_update("yigedan77#5736", False, True):
-#     #     print("Working")
-#     # if msg.startswith(prefix + 'MUTE'):
-#     #     for x in range(len(users)):
-#     #         if sender.mute:
-#     #             sender.mute = False
-#     #         print("Muted %s times" % x)
-#     #     print("Done")
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#     def empty():
-#         # if msg.startswith(prefix + 'ADD'):
-#         #     p = "pugs_in.txt"
-#         #     if not os.path.isfile("pugs_in.txt"):
-#         #         open(p, 'w')
-#         #         with open("pugs_in.txt", "a") as p:
-#         #             p.write(str(sender) + "\n")
-#         #             await client.send_message(message.channel, "%s you are in!" % (mention))
-#
-#         # if msg.startswith(prefix + 'TEST'):
-#         #     print(sender)
-#         #
-#         a
-#
-#
-#
-
-
-##-++
