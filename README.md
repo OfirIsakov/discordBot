@@ -1,6 +1,6 @@
 # ofido's Discord Bot!
 
-##Setup:
+## Setup:
 
 Clone/Download the files via the green button in the right side of the screen.
 
