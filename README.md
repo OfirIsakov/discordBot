@@ -20,7 +20,7 @@ def token():
 ```
 And **replace** [YOUR TOKEN HERE] with your token.
 **_OR_**
-Replace the `token.token()` in the last line with your token.
+Replace the `toke.token()` in the last line with your token.
 
 ## WORK IN PROGRESSES:
 

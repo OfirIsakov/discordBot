@@ -7,7 +7,7 @@ import youtube_dl
 import asyncio
 from itertools import cycle
 import numpy
-import token
+import toke
 
 ### PLAYERS IDS ###
 
@@ -486,5 +486,5 @@ async def kick(ctx):
 
 
 bot.loop.create_task(change_status())
-bot.run(token.token())
+bot.run(toke.token())
 
