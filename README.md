@@ -13,7 +13,7 @@ pip install asyncio
 pip install asyncio
 ```
 
-Then add a token.py file in the same folder as the KQLY.py and write this in the file:
+Then add a toke.py file in the same folder as the KQLY.py and write this in the file:
 ```
 def token():
     return "[YOUR TOKEN HERE]"
