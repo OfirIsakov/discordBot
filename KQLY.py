@@ -7,10 +7,9 @@ import youtube_dl
 import asyncio
 from itertools import cycle
 import numpy
-import toke
+import myToken
 
 ### PLAYERS IDS ###
-
 ofido = '283625847460462593'
 yigdan = '266593092205805568'
 rrass = '272719228170403840'
@@ -24,20 +23,20 @@ afk = '476770345945268225'
 console = '500414709351317509'
 
 ### LIST FOR MUSIC PLAYER ###
-players = {}
+players = {}  # Don't touch please
 
 ### ANIMATED MOTD ###
 status = ['KQLYHACKS.WORDPRESS.COM','NEVER VAC AND YOU KNOW!']
 
 ### MISC ###
+prefix = '#'
 line = '-----------------'
 
 ### PREFIX ###
-bot = commands.Bot(command_prefix="#")
+bot = commands.Bot(command_prefix=prefix)
 
 ### REMOVED COMMANDS ###
-bot.remove_command('help')
-
+bot.remove_command('help')  # Don't touch please
 
 
 
@@ -50,10 +49,6 @@ async def change_status():
         current_status = next(msgs)
         await bot.change_presence(game=discord.Game(name=current_status))
         await asyncio.sleep(6.5)
-        current_status = next(msgs)
-        await bot.change_presence(game=discord.Game(name=current_status))
-        await asyncio.sleep(6.5)
-        
         
 
 ### PRINTS TO CONSOLE WHEN GOING ONLINE ###
@@ -449,7 +444,7 @@ async def kick(ctx):
 # async def embed(ctx):
 #     embed = discord.Embed(title="test", description="THE KQLY IS TESTING")
 #     embed.set_footer(text="footer")
-#     embed.set_author(name="BOT ofido - Badad#6824")
+#     embed.set_author(name="cool name!")
 #     embed.add_field(name="field", value="but is it?", inline=True)
 #     await bot.say(embed=embed)
 
@@ -486,5 +481,5 @@ async def kick(ctx):
 
 
 bot.loop.create_task(change_status())
-bot.run(toke.token())
+bot.run(myToken.token())
 
