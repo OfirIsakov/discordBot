@@ -1,6 +1,6 @@
 # ofido's Discord Bot!
 
-# !!OUT-DATED!!
+# !!THIS CODE IS THE WORST PRACTICE, DO NOT COPY THIS!! !!OH, AND ITS OUT-DATED!!
 
 ## Setup:
 
